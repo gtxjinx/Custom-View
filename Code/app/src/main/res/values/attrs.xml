@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="Code">
+        <attr name="size" format="dimension"/>
+        <attr name="text" format="string"/>
+        <attr name="backround" format="color"/>
+        <attr name="textcolor" format="color"/>
+        <attr name="textsize" format="dimension"/>
+        <attr name="gravity">
+            <flag name="left" value="0"/>
+            <flag name="top" value="1"/>
+            <flag name="right" value="2"/>
+            <flag name="bottom" value="3"/>
+            <flag name="center" value="4"/>
+        </attr>
+    </declare-styleable>
+</resources>

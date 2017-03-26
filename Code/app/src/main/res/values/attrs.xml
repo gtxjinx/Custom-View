@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="Code">
-        <attr name="size" format="dimension"/>
+    <declare-styleable name="Code"><!--自定义控件的类名-->
+        <attr name="size" format="dimension"/> <!--属性名以及属性的类型-->
         <attr name="text" format="string"/>
-        <attr name="backround" format="color"/>
+        <attr name="codecolor" format="color"/>
         <attr name="textcolor" format="color"/>
         <attr name="textsize" format="dimension"/>
         <attr name="gravity">

@@ -24,7 +24,7 @@ import static android.R.attr.width;
 public class Code extends View {
 
     private Paint mPaint;
-    private int backgroundcolor= Color.GRAY;
+    private int codecolor= Color.GRAY;
     private int textcolor=Color.BLACK;
     private float length;
     private float textsize;
@@ -64,7 +64,7 @@ public class Code extends View {
         TypedArray typedArray =context.obtainStyledAttributes(attrs,R.styleable.Code);
         if(typedArray!=null)
         {
-            backgroundcolor=typedArray.getColor(R.styleable.Code_backround,Color.YELLOW);
+            codecolor=typedArray.getColor(R.styleable.Code_codecolor,Color.YELLOW);
             text=typedArray.getString(R.styleable.Code_text);
             textsize=typedArray.getDimension(R.styleable.Code_textsize,20);
             length=typedArray.getDimension(R.styleable.Code_size,100);
@@ -73,6 +73,8 @@ public class Code extends View {
 
             typedArray.recycle();
         }
+        if (text==null)
+            text="";
     }
 
     public Code(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -83,20 +85,19 @@ public class Code extends View {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec)
     {
+
         int widthMode=MeasureSpec.getMode(widthMeasureSpec);
-        int widthSize=MeasureSpec.getSize(widthMeasureSpec);
         int heightMode=MeasureSpec.getMode(heightMeasureSpec);
-        int heightSize=MeasureSpec.getSize(heightMeasureSpec);
         //////////设定控件的长宽
         switch (widthMode)
         {
             case MeasureSpec.EXACTLY:
                 break;
             case MeasureSpec.UNSPECIFIED:
-                widthSize=100;
-                widthMeasureSpec=MeasureSpec.makeMeasureSpec(widthSize,MeasureSpec.EXACTLY);
+                widthMeasureSpec=MeasureSpec.makeMeasureSpec((int)length,MeasureSpec.EXACTLY);
                 break;
             case MeasureSpec.AT_MOST:
+                widthMeasureSpec=MeasureSpec.makeMeasureSpec((int)length,MeasureSpec.EXACTLY);
                 break;
         }
         switch (heightMode)
@@ -104,13 +105,14 @@ public class Code extends View {
             case MeasureSpec.EXACTLY:
                 break;
             case MeasureSpec.UNSPECIFIED:
-                heightSize = 100;
-                heightMeasureSpec=MeasureSpec.makeMeasureSpec(heightSize,MeasureSpec.EXACTLY);
+                heightMeasureSpec=MeasureSpec.makeMeasureSpec((int)length,MeasureSpec.EXACTLY);
                 break;
             case MeasureSpec.AT_MOST:
+                heightMeasureSpec=MeasureSpec.makeMeasureSpec((int)length,MeasureSpec.EXACTLY);
                 break;
         }
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);   //传输长宽数据
+
 
         //获取方块的中心点
         int width=MeasureSpec.getSize(widthMeasureSpec);
@@ -153,14 +155,11 @@ public class Code extends View {
     protected void onDraw(Canvas canvas)
     {
         super.onDraw(canvas);
-       // RectF test=new RectF(80,260,200,230);
-        mPaint.setColor(backgroundcolor);
+        mPaint.setColor(codecolor);
         canvas.drawRoundRect(rectf,length/10,length/10,mPaint);
         mPaint.setColor(textcolor);
         mPaint.setTextSize(textsize);
         Log.d("Jinx",text);
         canvas.drawText(text,X-length/5*2,Y-length/2+textsize,mPaint);
-        //canvas.drawLine(X-length/2+textsize,0,X-length/2+textsize,1500,mPaint);
-        //canvas.drawLine(0,Y-length/2+textsize,1500,Y-length/2+textsize,mPaint);
     }
 }

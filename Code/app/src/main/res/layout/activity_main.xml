@@ -9,12 +9,15 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+                android:gravity="center"
     tools:context="com.example.administrator.service.MainActivity">
 
     <com.example.administrator.service.Code
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         code:gravity="center"
-        code:text="1"
+        code:textsize="20sp"
+        code:size="100dp"
+        code:codecolor="@color/colorPrimaryDark"
         />
 </RelativeLayout>
